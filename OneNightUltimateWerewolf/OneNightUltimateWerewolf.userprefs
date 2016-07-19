@@ -1,0 +1,18 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameManager.cs">
+    <Files>
+      <File FileName="Assets/Scripts/QuitButton.cs" Line="20" Column="27" />
+      <File FileName="Assets/Scripts/AdvanceButton.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="104" Column="6" />
+      <File FileName="Assets/Scripts/Token.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Card.cs" Line="32" Column="5" />
+      <File FileName="Assets/Scripts/DealButton.cs" Line="19" Column="3" />
+      <File FileName="Assets/Scripts/ResetButton.cs" Line="7" Column="42" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
