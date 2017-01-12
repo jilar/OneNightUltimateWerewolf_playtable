@@ -94,6 +94,7 @@ public class GameManager : MonoBehaviour {
 					tokenObject.SetActive (false);
 				}
 			}
+			deck.GetComponent<Deck>().cards=cardsInPlay;        //have deck contain only roles chosen
 			int size = cardsInPlay.Count;
 			Random r = new Random ();
 
