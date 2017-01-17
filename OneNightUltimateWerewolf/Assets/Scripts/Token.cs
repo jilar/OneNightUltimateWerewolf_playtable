@@ -12,9 +12,11 @@ public class Token : MonoBehaviour {
 	public Image image;
 	public bool selected = false;
 	public GameObject card;
+	public Canvas face;               
 
 	void Awake() {
 		GetComponent<Renderer> ().material.color = Color.clear;
+
 	}
 
 	void OnEnable() {
@@ -33,14 +35,16 @@ public class Token : MonoBehaviour {
 			selected = true;
 		}
 		*/
-		if (GameManager.gamePhase == GameManager.GamePhase.idlePhase) {
+		if (selected== false && GameManager.gamePhase == GameManager.GamePhase.idlePhase) {
 			selected = true;
-			gameObject.GetComponent<Renderer> ().material.color = Color.yellow;
+			//gameObject.GetComponent<Renderer> ().material.color = Color.yellow;
+			face.overrideSorting=true;
 		} else {
 			selected = false;
-			gameObject.GetComponent<Renderer> ().material.color = Color.clear;
+			//gameObject.GetComponent<Renderer> ().material.color = Color.clear;
+			face.overrideSorting=false;
 		}
-		
+
 	}
 
 	public void setText(string s) {

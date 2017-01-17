@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour {
 		token.GetComponent<Token> ().role = role;
 		token.GetComponent<Token> ().setText (role);
 		token.GetComponent<Token> ().image.sprite = tokenSprites [tokenCount];
+		token.GetComponent<Token> ().image.rectTransform.sizeDelta = new Vector2(120,120);
 
 		GameObject card = (GameObject)Instantiate (cardPrefab, Vector3.zero, cardPrefab.transform.rotation);
 		card.GetComponent<Card> ().role = role;
