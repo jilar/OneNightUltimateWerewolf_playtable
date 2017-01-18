@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour {
 
 	public enum GamePhase {idlePhase, dealPhase, nightPhase, dayPhase, votePhase};
 
-	public static GamePhase gamePhase = GamePhase.idlePhase;
+	public static GamePhase gamePhase;
 	public GameObject tokenPrefab;
 	public GameObject cardPrefab;
 	public GameObject deck;
@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour {
 	public int tokenCount = 0;
 
 	void Awake() {
+		gamePhase = GamePhase.idlePhase;
 		createToken ("Doppelganger");
 		createToken ("Mason");
 		createToken ("Mason");
@@ -55,7 +56,7 @@ public class GameManager : MonoBehaviour {
 		token.GetComponent<Token> ().role = role;
 		token.GetComponent<Token> ().setText (role);
 		token.GetComponent<Token> ().image.sprite = tokenSprites [tokenCount];
-		token.GetComponent<Token> ().image.rectTransform.sizeDelta = new Vector2(120,120);
+		token.GetComponent<Token> ().image.rectTransform.sizeDelta = new Vector2(120,120);  //rezise images to fit token
 
 		GameObject card = (GameObject)Instantiate (cardPrefab, Vector3.zero, cardPrefab.transform.rotation);
 		card.GetComponent<Card> ().role = role;
@@ -78,8 +79,8 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void handlePhase() {
-		switch (gamePhase) {
-		case GamePhase.idlePhase:
+//		switch (gamePhase) {
+//		case GamePhase.idlePhase:
 			List<Card> cardsInPlay = new List<Card> ();
 			foreach (GameObject tokenObject in tokens) {
 				Token token = tokenObject.GetComponent<Token> ();
@@ -97,10 +98,14 @@ public class GameManager : MonoBehaviour {
 			}
 			deck.GetComponent<Deck>().cards=cardsInPlay;        //have deck contain only roles chosen
 			int size = cardsInPlay.Count;
+		Deck myDeck = deck.GetComponent<Deck> ();
+		switch (gamePhase) {
+		case GamePhase.idlePhase:
 			Random r = new Random ();
 
+//			Deck myDeck = deck.GetComponent<Deck> ();
 			for (int i = 0; i < size; i++) {
-				Deck myDeck = deck.GetComponent<Deck> ();
+				//Deck myDeck = deck.GetComponent<Deck> ();
 				myDeck.deal (myDeck.cards [r.Next (0, myDeck.cards.Count)]);
 			}
 			//btnAdv.SetActive (false);
@@ -109,6 +114,11 @@ public class GameManager : MonoBehaviour {
 			break;
 		case GamePhase.dealPhase:
 			//deal cards
+			Debug.LogError("made it to deal phase");
+			for (int i = 0; i < myDeck.cards.Count; i++) {
+				//Deck myDeck = deck.GetComponent<Deck> ();
+				myDeck.handout(myDeck.cards [i]);
+			}
 			break;
 		case GamePhase.nightPhase:
 			//handle events

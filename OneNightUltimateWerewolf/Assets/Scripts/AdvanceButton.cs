@@ -16,8 +16,9 @@ public class AdvanceButton : MonoBehaviour {
 	}
 
 	public void TapHandler(object sender, EventArgs e) {
-		Debug.LogError ("Tapped adv");
-		GameManager gm = gameManager.GetComponent<GameManager> ();
-		gm.handlePhase ();
+		if (GameManager.gamePhase == GameManager.GamePhase.idlePhase) {
+			GameManager gm = gameManager.GetComponent<GameManager> ();
+			gm.handlePhase ();
+		}
 	}
 }

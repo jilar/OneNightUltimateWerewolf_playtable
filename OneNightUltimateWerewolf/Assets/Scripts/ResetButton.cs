@@ -4,7 +4,7 @@ using System;
 using System.Collections;
 using TouchScript.Gestures;
 
-public class QuitButton : MonoBehaviour {
+public class ResetButton : MonoBehaviour {
 
 	void OnEnable() {
 		GetComponent<TapGesture> ().Tapped += TapHandler;
@@ -15,6 +15,7 @@ public class QuitButton : MonoBehaviour {
 	}
 
 	public void TapHandler(object sender, EventArgs e) {
-		SceneManager.LoadScene ("Main");
+		Debug.LogError ("TEST");
+		SceneManager.LoadScene("Main");
 	}
 }

@@ -26,4 +26,11 @@ public class Deck : MonoBehaviour {
 		iTween.MoveTo (card.gameObject, dealPosition, 0.5f);
 		cards.Remove (card);
 	}
+
+	public void handout(Card card) {
+		Debug.LogError ("DEALING");
+		card.gameObject.transform.parent = null;
+		iTween.MoveTo (card.gameObject, new Vector3(0, 5, 0), 0.5f);
+		cards.Remove (card);
+	}
 }

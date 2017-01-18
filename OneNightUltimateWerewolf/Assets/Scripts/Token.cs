@@ -35,16 +35,22 @@ public class Token : MonoBehaviour {
 			selected = true;
 		}
 		*/
-		if (selected== false && GameManager.gamePhase == GameManager.GamePhase.idlePhase) {
-			selected = true;
-			//gameObject.GetComponent<Renderer> ().material.color = Color.yellow;
-			face.overrideSorting=true;
-		} else {
-			selected = false;
-			//gameObject.GetComponent<Renderer> ().material.color = Color.clear;
-			face.overrideSorting=false;
-		}
+		switch (GameManager.gamePhase) {
+		case GameManager.GamePhase.idlePhase:
+			if (selected == false) {
+				selected = true;
+				//gameObject.GetComponent<Renderer> ().material.color = Color.yellow;
+				face.overrideSorting = true;
 
+			} else {
+				selected = false;
+				//gameObject.GetComponent<Renderer> ().material.color = Color.clear;
+				face.overrideSorting = false;
+			}
+			break;
+		default:
+			break;
+		}
 	}
 
 	public void setText(string s) {
