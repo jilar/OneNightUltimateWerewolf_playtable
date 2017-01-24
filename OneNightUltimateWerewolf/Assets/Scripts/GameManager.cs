@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour {
 	public float horizontalShift = 1.5f;
 	public float verticalShift = -1.5f;
 	public int tokenCount = 0;
+	public int selectedCount=0;
 
 	void Awake() {
 		gamePhase = GamePhase.idlePhase;
@@ -79,46 +80,67 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void handlePhase() {
-//		switch (gamePhase) {
-//		case GamePhase.idlePhase:
+		switch (gamePhase) {
+		case GamePhase.idlePhase:
 			List<Card> cardsInPlay = new List<Card> ();
 			foreach (GameObject tokenObject in tokens) {
 				Token token = tokenObject.GetComponent<Token> ();
 				if (token.selected) {
-					//TODO: change color to clear when we get sprite
 					tokenObject.GetComponent<Renderer> ().material.color = Color.clear;
 					tokenObject.GetComponent<TransformGesture> ().enabled = true;
 					token.selected = false;
 					//deck.GetComponent<Deck>().deal(token.card.GetComponent<Card>());
 					cardsInPlay.Add (token.card.GetComponent<Card> ());
-
+					selectedCount++;
+					Debug.Log(selectedCount);
 				} else {
 					tokenObject.SetActive (false);
 				}
 			}
-			deck.GetComponent<Deck>().cards=cardsInPlay;        //have deck contain only roles chosen
+			deck.GetComponent<Deck> ().cards = cardsInPlay;        //have deck contain only roles chosen
+			Debug.Log(selectedCount);
+			deck.GetComponent<Deck> ().playerArray = selectedCount-6;
 			int size = cardsInPlay.Count;
-		Deck myDeck = deck.GetComponent<Deck> ();
-		switch (gamePhase) {
-		case GamePhase.idlePhase:
 			Random r = new Random ();
 
 //			Deck myDeck = deck.GetComponent<Deck> ();
 			for (int i = 0; i < size; i++) {
-				//Deck myDeck = deck.GetComponent<Deck> ();
-				myDeck.deal (myDeck.cards [r.Next (0, myDeck.cards.Count)]);
+				Deck myDeck = deck.GetComponent<Deck> ();
+				myDeck.deal(myDeck.cards [r.Next (0, myDeck.cards.Count)]);
+//				deck.GetComponent<Deck> ().deal (deck.GetComponent<Deck> ().cards [r.Next (0, deck.GetComponent<Deck> ().cards.Count)]);
 			}
-			//btnAdv.SetActive (false);
+			deck.GetComponent<Deck> ().cards = deck.GetComponent<Deck> ().tmpCards;
+			btnAdv.SetActive (false);
 			deck.SetActive (false);
 			gamePhase = GamePhase.dealPhase;
 			break;
 		case GamePhase.dealPhase:
 			//deal cards
-			Debug.LogError("made it to deal phase");
-			for (int i = 0; i < myDeck.cards.Count; i++) {
-				//Deck myDeck = deck.GetComponent<Deck> ();
-				myDeck.handout(myDeck.cards [i]);
+			Debug.LogError ("made it to deal phase");
+			//Random l = new Random ();
+			for (int i = 0; i < deck.GetComponent<Deck> ().cards.Count; i++) {
+				Deck myDeck2 = deck.GetComponent<Deck> ();
+				//myDeck2.handout(myDeck2.cards [l.Next (0, myDeck2.cards.Count)]);
+				myDeck2.handout (myDeck2.cards [0]);
 			}
+			//following code for initial token placement
+			float placementXleft, placementXright, placementYleft, placementYright;
+			placementXleft = -5.3f;
+			placementXright = 5.3f;
+			placementYleft = 2.7f;
+			placementYright = 2.7f;
+			for (int i = 0; i < tokens.Count; i++) {
+				if(tokens [i].active==true){
+				if (i % 2!=0 ||i==0) {
+						iTween.MoveTo (tokens [i].gameObject, new Vector3 (placementXleft, placementYleft, 0), 0.5f);
+					placementYleft -= .5f;
+				} else {	
+						iTween.MoveTo (tokens [i].gameObject, new Vector3 (placementXright, placementYright, 0), 0.5f);
+					placementYright = placementYright - .5f;
+				}
+				}
+			}
+
 			break;
 		case GamePhase.nightPhase:
 			//handle events
