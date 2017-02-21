@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 9f5715190d1eb5142bfc07894a2b1093
+timeCreated: 1486064188
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Kabel
+  fontNames:
+  - Kabel
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: b226d7eb649943944b688d8dcfb091d6, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
