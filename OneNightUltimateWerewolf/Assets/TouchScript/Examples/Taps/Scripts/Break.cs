@@ -11,7 +11,13 @@ namespace TouchScript.Examples.Tap
 {
     public class Break : MonoBehaviour
     {
+		public float Force = 3f;
         public float Power = 10.0f;
+		public ParticleSystem Particles;
+
+		private TapGesture gesture;
+		private Rigidbody rb;
+		private Camera activeCamera;
 
         private LongPressGesture longPressGesture;
         private PressGesture pressGesture;
@@ -33,18 +39,25 @@ namespace TouchScript.Examples.Tap
 
         private void OnEnable()
         {
+			gesture = GetComponent<TapGesture>();
+			gesture.Tapped += tappedHandler;
             rnd = GetComponent<MeshRenderer>();
-            longPressGesture = GetComponent<LongPressGesture>();
-            pressGesture = GetComponent<PressGesture>();
+			GetComponent<LongPressGesture>().StateChanged += longPressedHandler;
+           // pressGesture = GetComponent<PressGesture>();
 
-            longPressGesture.StateChanged += longPressedHandler;
-            pressGesture.Pressed += pressedHandler;
+           
+            //pressGesture.Pressed += pressedHandler;
+			rb = GetComponent<Rigidbody>();
+			activeCamera = GameObject.Find("Scene Camera").GetComponent<Camera>();
+
+		
         }
 
         private void OnDisable()
         {
             longPressGesture.StateChanged -= longPressedHandler;
-            pressGesture.Pressed -= pressedHandler;
+            //pressGesture.Pressed -= pressedHandler;
+		gesture.Tapped -= tappedHandler;
         }
 
         private void Update()
@@ -52,7 +65,7 @@ namespace TouchScript.Examples.Tap
             if (growing)
             {
                 growingTime += Time.deltaTime;
-                rnd.material.color = Color.Lerp(Color.white, Color.red, growingTime);
+                rnd.material.color = Color.Lerp(Color.white, Color.blue, growingTime);
             }
         }
 
@@ -75,6 +88,7 @@ namespace TouchScript.Examples.Tap
 
         private void longPressedHandler(object sender, GestureStateChangeEventArgs e)
         {
+			
             if (e.State == Gesture.GestureState.Recognized)
             {
                 // if we are not too small
@@ -97,8 +111,19 @@ namespace TouchScript.Examples.Tap
             }
             else if (e.State == Gesture.GestureState.Failed)
             {
+				Debug.Log ("testing");
                 stopGrowing();
             }
         }
+		private void tappedHandler(object sender, System.EventArgs e)
+		{
+			var ray = activeCamera.ScreenPointToRay(gesture.ScreenPosition);
+			RaycastHit hit;
+			if (Physics.Raycast(ray, out hit) && hit.transform == transform)
+			{
+				rb.AddForceAtPosition(ray.direction*Force, hit.point, ForceMode.Impulse);
+				Instantiate(Particles, hit.point, Quaternion.identity);
+			}
+		}
     }
 }
