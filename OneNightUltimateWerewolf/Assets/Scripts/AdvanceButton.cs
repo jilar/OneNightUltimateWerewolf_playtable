@@ -16,8 +16,12 @@ public class AdvanceButton : MonoBehaviour {
 	}
 
 	public void TapHandler(object sender, EventArgs e) {
+		GameManager gm = gameManager.GetComponent<GameManager> ();
 		if (GameManager.gamePhase == GameManager.GamePhase.idlePhase) {
-			GameManager gm = gameManager.GetComponent<GameManager> ();
+			gm.handlePhase ();
+		} else if (GameManager.gamePhase == GameManager.GamePhase.dealPhase) {
+			gm.handlePhase ();
+		} else if (GameManager.gamePhase == GameManager.GamePhase.nightPhase) {
 			gm.handlePhase ();
 		}
 	}

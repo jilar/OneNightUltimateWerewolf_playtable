@@ -15,7 +15,7 @@ public class ResetButton : MonoBehaviour {
 	}
 
 	public void TapHandler(object sender, EventArgs e) {
-		Debug.LogError ("TEST");
+		//Debug.LogError ("TEST");
 		SceneManager.LoadScene("Main");
 	}
 }

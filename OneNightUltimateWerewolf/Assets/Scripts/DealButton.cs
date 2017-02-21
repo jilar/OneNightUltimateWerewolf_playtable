@@ -23,7 +23,7 @@ public class DealButton : MonoBehaviour {
 //			deckObject.deal (deckObject.cards [0]);
 //		}
 		if (GameManager.gamePhase == GameManager.GamePhase.dealPhase) {
-			Debug.LogError ("beep beep");
+			//Debug.LogError ("beep beep");
 			gm.handlePhase();
 		}
 	}
