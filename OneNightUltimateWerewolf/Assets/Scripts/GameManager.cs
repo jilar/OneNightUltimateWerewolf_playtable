@@ -202,20 +202,20 @@ public class GameManager : MonoBehaviour {
 		case GamePhase.nightPhase: //night actions
 
 
-//			//naaration mode code
-//			//find out which night roles are players
-//			isPlayer[0]= roleIsAPlayer("Doppelganger");
-//			isPlayer[1]= roleIsAPlayer("Werewolf");
-//			isPlayer[2]= roleIsAPlayer("Seer");
-//			isPlayer[3]= roleIsAPlayer("Robber");
-//			isPlayer[4]= roleIsAPlayer("Troublemaker");
-//			isPlayer[5]= roleIsAPlayer("Drunk");
-//			isPlayer[6]= roleIsAPlayer("Insomniac");
-//
-//			//play background music
-//			audioPlayer.Play ();
-//			StartCoroutine(nightPhase());
-//			gamePhase = GamePhase.dayPhase;
+			//naaration mode code
+			//find out which night roles are players
+			isPlayer[0]= roleIsAPlayer("Doppelganger");
+			isPlayer[1]= roleIsAPlayer("Werewolf");
+			isPlayer[2]= roleIsAPlayer("Seer");
+			isPlayer[3]= roleIsAPlayer("Robber");
+			isPlayer[4]= roleIsAPlayer("Troublemaker");
+			isPlayer[5]= roleIsAPlayer("Drunk");
+			isPlayer[6]= roleIsAPlayer("Insomniac");
+
+			//play background music
+			audioPlayer.Play ();
+			StartCoroutine(nightPhase());
+			gamePhase = GamePhase.dayPhase;
 			break;
 		case GamePhase.dayPhase:
 			//timer goes here
@@ -249,6 +249,7 @@ public class GameManager : MonoBehaviour {
 		//doppleganger action
 		if (rolesInPlay.Contains ("Doppelganger")) {
 			//doppleganger view and take action
+			yield return StartCoroutine (soundPrompt (1, 1));
 			yield return StartCoroutine (doppleGangerAction(isPlayer[0]));
 			//doppleganerAction();
 			yield return StartCoroutine (soundPrompt (9, 9));
@@ -261,7 +262,7 @@ public class GameManager : MonoBehaviour {
 		if (rolesInPlay.Contains ("Werewolf")){
 			yield return StartCoroutine (soundPrompt (12, 13));
 			yield return StartCoroutine (werewolfAction(isPlayer[1]));
-			//findAndFlip ("Werewolf");
+//			findAndFlip ("Werewolf");
 			yield return StartCoroutine (soundPrompt (14, 14));
 			yield return new WaitForSeconds (1f);
 		}
@@ -361,7 +362,6 @@ public class GameManager : MonoBehaviour {
 		//have player select another players card, proceed to do action if chose card was seer, drunk, troublemaker, or robber
 		}else if (player) {
 			// make player cards tappable
-			yield return StartCoroutine (soundPrompt (1, 1));
 			for (int i = 0; i < deck.GetComponent<Deck> ().cards.Count; i++) {
 				if (!(deck.GetComponent<Deck> ().cards [i].transform.position.y == 1) || !(deck.GetComponent<Deck> ().cards [i].transform.position.x == -3 ||
 					deck.GetComponent<Deck> ().cards [i].transform.position.x == 0 || deck.GetComponent<Deck> ().cards [i].transform.position.x == 3)) {
