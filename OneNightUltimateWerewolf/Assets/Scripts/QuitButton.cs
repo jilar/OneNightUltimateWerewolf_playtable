@@ -4,7 +4,7 @@ using System;
 using System.Collections;
 using TouchScript.Gestures;
 
-public class ResetButton : MonoBehaviour {
+public class QuitButton : MonoBehaviour {
 
 	public GameObject gameManager;
 
