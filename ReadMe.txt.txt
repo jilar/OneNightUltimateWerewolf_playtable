@@ -1,2 +1,1 @@
-Game build is currently sandbox style (players make movements and actions without prompts)
-The narration style is currently disabled but works as intended (there may be missed bugs); sounds works as well 
+Game build is currently in narration style; players make movements and actions with prompts; sounds works as well.

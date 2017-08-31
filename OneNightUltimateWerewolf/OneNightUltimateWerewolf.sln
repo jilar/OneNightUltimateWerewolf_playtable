@@ -1,11 +1,11 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{399B95AC-667F-2FE9-80C7-1EDE3CF99FFC}") = "OneNightUltimateWerewolf", "Assembly-CSharp-firstpass.csproj", "{930054E5-DD84-C86B-4E24-6C0229BCE90E}"
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneNightUltimateWerewolf", "Assembly-CSharp.csproj", "{37AE4025-CA4E-127A-1EEE-F507E02A86F9}"
 EndProject
-Project("{399B95AC-667F-2FE9-80C7-1EDE3CF99FFC}") = "OneNightUltimateWerewolf", "Assembly-CSharp.csproj", "{37AE4025-CA4E-127A-1EEE-F507E02A86F9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneNightUltimateWerewolf", "Assembly-CSharp-firstpass.csproj", "{930054E5-DD84-C86B-4E24-6C0229BCE90E}"
 EndProject
-Project("{399B95AC-667F-2FE9-80C7-1EDE3CF99FFC}") = "OneNightUltimateWerewolf", "Assembly-CSharp-Editor.csproj", "{09A3EFDB-F31A-FFD9-E63C-25EB0765BCAA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneNightUltimateWerewolf", "Assembly-CSharp-Editor.csproj", "{09A3EFDB-F31A-FFD9-E63C-25EB0765BCAA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{930054E5-DD84-C86B-4E24-6C0229BCE90E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{930054E5-DD84-C86B-4E24-6C0229BCE90E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{930054E5-DD84-C86B-4E24-6C0229BCE90E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{930054E5-DD84-C86B-4E24-6C0229BCE90E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{37AE4025-CA4E-127A-1EEE-F507E02A86F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{37AE4025-CA4E-127A-1EEE-F507E02A86F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37AE4025-CA4E-127A-1EEE-F507E02A86F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37AE4025-CA4E-127A-1EEE-F507E02A86F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{930054E5-DD84-C86B-4E24-6C0229BCE90E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{930054E5-DD84-C86B-4E24-6C0229BCE90E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{930054E5-DD84-C86B-4E24-6C0229BCE90E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{930054E5-DD84-C86B-4E24-6C0229BCE90E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{09A3EFDB-F31A-FFD9-E63C-25EB0765BCAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{09A3EFDB-F31A-FFD9-E63C-25EB0765BCAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09A3EFDB-F31A-FFD9-E63C-25EB0765BCAA}.Release|Any CPU.ActiveCfg = Release|Any CPU

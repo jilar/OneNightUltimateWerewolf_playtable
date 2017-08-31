@@ -19,7 +19,7 @@ public class Card : MonoBehaviour {
 
 	private void Awake() {
 		GetComponent<Renderer> ().material.color = Color.clear;
-		//GetComponent<TransformGesture> ().enabled = false;
+		GetComponent<TransformGesture> ().enabled = false;
 	}
 
 //	void OnCollisionEnter(Collision col) {
